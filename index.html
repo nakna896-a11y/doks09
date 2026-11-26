@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Автосимулятор ПДД України</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="cab">
+  <div id="windshield">
+    <canvas id="scene"></canvas>
+    <div id="hud">
+      <div id="limitSign">50</div>
+      <div id="score">Бали: 100</div>
+    </div>
+    <div id="toast"></div>
+    <div id="mirror"><canvas id="mC" width="240" height="60"></canvas></div>
+    <canvas id="mL" class="side" width="90" height="70"></canvas>
+    <canvas id="mR" class="side" width="90" height="70"></canvas>
+  </div>
+  <div id="dash">
+    <canvas id="gauges" width="420" height="190"></canvas>
+    <div id="wheelBox"><div id="wheel"></div></div>
+    <div id="panel">
+      <div class="row">
+        <button data-a="engine">🔑 Двигун (I)</button>
+        <button data-a="sL">⬅ (Q)</button>
+        <button data-a="haz">⚠ (H)</button>
+        <button data-a="sR">➡ (E)</button>
+        <button data-a="lights">💡 (L)</button>
+        <button data-a="wipers">🌧 (V)</button>
+        <button data-a="horn">📯 (C)</button>
+        <button data-a="belt">🔒 (B)</button>
+        <button data-a="hb">✋ Ручник</button>
+      </div>
+      <div class="row" id="gears"></div>
+      <div class="row">
+        <button class="hold" data-k="ArrowLeft">◀</button>
+        <button class="hold" data-k="ArrowRight">▶</button>
+        <button class="hold" data-k="ArrowUp">Газ</button>
+        <button class="hold" data-k="ArrowDown">Гальмо</button>
+        <button class="hold" data-k="Shift" id="clutchBtn">Зчеплення</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="menu" class="overlay">
+  <div class="card">
+    <h1>🚗 Автосимулятор + ПДД України</h1>
+    <p>Їдь по дорозі, дотримуйся знаків, розмітки та швидкості. За порушення знімаються бали, на знаках — питання з ПДД.</p>
+    <p><b>Обери коробку передач:</b></p>
+    <button class="big" id="startM">⚙️ Механіка</button>
+    <button class="big" id="startA">🅰️ Автомат</button>
+    <div class="help">
+      <b>Керування:</b> ↑ газ · ↓ гальмо · ←→ кермо · Shift зчеплення (механіка) · Пробіл ручник · I двигун<br>
+      Q/E поворотники · H аварійка · L фари · V двірники · C сигнал · B ремінь<br>
+      Механіка: 0(N), 1–5, R · Автомат: P, R, N, D<br>
+      <i>Порада (механіка): стисни Shift → 1 передача → повільно відпускай Shift, додаючи газ.</i>
+    </div>
+  </div>
+</div>
+
+<div id="quiz" class="overlay" hidden>
+  <div class="card">
+    <h3>📚 Питання з ПДД</h3>
+    <p id="qq"></p>
+    <div id="qo"></div>
+    <p id="qe"></p>
+    <button class="big" id="qc" hidden>Продовжити</button>
+  </div>
+</div>
+
+<div id="end" class="overlay" hidden>
+  <div class="card">
+    <h1>❌ Іспит не складено</h1>
+    <p>Бали закінчилися. Повтори правила й спробуй ще!</p>
+    <button class="big" onclick="location.reload()">Спробувати знову</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
